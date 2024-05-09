@@ -3,10 +3,11 @@
 import '@mantine/core/styles.css';
 import Navbar from '@/components/Navbar';
 
-import { ColorSchemeScript, MantineProvider } from '@mantine/core';
+import { ColorSchemeScript, MantineProvider} from '@mantine/core';
+import theme from '@/theme';
 
 export const metadata = {
-  title: 'My Mantine app',
+  title: 'IN PROGRESS',
   description: 'I have followed setup instructions carefully',
 };
 
@@ -21,12 +22,11 @@ export default function RootLayout({
         <ColorSchemeScript />
       </head>
       <body>
-        <MantineProvider>
-
+        <MantineProvider defaultColorScheme='light'>
           <Navbar />
-          
+          <div> bla </div> 
           {children}
-      
+  
         </MantineProvider>
       </body>
     </html>
