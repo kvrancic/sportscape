@@ -1,4 +1,4 @@
-import { Image, Container, Title, Button, Group, Text, List, ThemeIcon, rem } from '@mantine/core';
+/* import { Image, Container, Title, Button, Group, Text, List, ThemeIcon, rem } from '@mantine/core'; */
 
 import classes from './HeroSection.module.css';
 import exp from 'constants';

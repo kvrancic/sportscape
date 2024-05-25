@@ -1,33 +1,29 @@
 // Import styles of packages that you've installed.
 // All packages except `@mantine/hooks` require styles imports
-import '@mantine/core/styles.css';
+/* import '@mantine/core/styles.css'; */
 import Navbar from '@/components/Navbar';
+import './globals.css';
 
-import { ColorSchemeScript, MantineProvider} from '@mantine/core';
-import theme from '@/theme';
+/* import { ColorSchemeScript, MantineProvider} from '@mantine/core';
+import theme from '@/theme'; */
 
 export const metadata = {
   title: 'IN PROGRESS',
   description: 'I have followed setup instructions carefully',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <ColorSchemeScript />
       </head>
       <body>
-        <MantineProvider defaultColorScheme='light'>
+        {/* <MantineProvider defaultColorScheme='light'>
           <Navbar />
-          <div> bla </div> 
+          <div>bla</div>
           {children}
-  
-        </MantineProvider>
+        </MantineProvider> */}
+        {children}
       </body>
     </html>
   );
