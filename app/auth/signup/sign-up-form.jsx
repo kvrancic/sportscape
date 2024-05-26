@@ -1,12 +1,12 @@
 "use client";
 import Link from "next/link";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { createClient } from '@/utils/supabase/client'
 import { SignUp } from "@supabase/auth-ui-react";
 import { classAppearance } from "@/app/formStyle";
 import { useState } from "react";
 
 export default function SignUpForm() {
-  const supabase = createClientComponentClient();
+  const supabase = createClient();
 
   return (
     <div className="w-11/12 p-12 px-6 py-10 rounded-lg sm:w-8/12 md:w-6/12 lg:w-5/12 2xl:w-3/12 sm:px-10 sm:py-6">

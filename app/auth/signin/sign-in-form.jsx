@@ -1,13 +1,13 @@
 "use client";
 import Link from "next/link";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { createClient } from '@/utils/supabase/client'
 import { SignIn } from "@supabase/auth-ui-react";
 import { classAppearance } from "@/app/formStyle";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 export default function SignInForm() {
-  const supabase = createClientComponentClient();
+  const supabase = createClient();
   const router = useRouter();
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export default function SignInForm() {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((event) => {
       if (event === "SIGNED_IN") {
-        router.push("/");
+        router.push("/welcome");
       }
     });
 

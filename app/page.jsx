@@ -1,15 +1,13 @@
 'use client'
 
 import Link from 'next/link';
-import HeroSection from '../components/HeroSection';
+import HeroImageRight from '../components/HeroImageRight';
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <p className="text-xl font-bold">Welcome to My Tailwind CSS Project</p>
-      <Link href="/test-tailwind" className="mt-50 text-red-500">Test Tailwind CSS</Link>
-      {/* <HeroSection /> */}
-    </div>
+    
+      <HeroImageRight />
+    
   );
 }
 

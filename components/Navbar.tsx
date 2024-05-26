@@ -6,7 +6,7 @@ export default function Navbar() {
       <Link href="/">
         Home
       </Link>
-      <Link href="/login">
+      <Link href="/auth/signin">
         Login
       </Link>
       <Link href="/signup">
