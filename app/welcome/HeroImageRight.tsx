@@ -23,8 +23,7 @@ export default function HeroImageRight() {
             </Title>
 
             <Text className={classes.description} mt={30}>
-              Build fully functional accessible web applications with ease – Mantine includes more
-              than 100 customizable components and hooks to cover you in any situation
+            At Sportscape, we bridge the gap between venue owners and athletes. Whether you&#39;re looking to book a slot for a game or join an existing one, Sportscape makes it easy. Explore venues, connect with fellow sports enthusiasts, and enjoy seamless bookings.
             </Text>
 
             <Link href="/auth/signin">
@@ -34,12 +33,11 @@ export default function HeroImageRight() {
                 size="xl"
                 className={classes.control}
                 mt={40}
-                component="a"
               >
                 Get started
               </Button>
             </Link>
-          </div>
+          </div> 
         </div>
       </Container>
     </div>

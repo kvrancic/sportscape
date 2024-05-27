@@ -1,7 +1,7 @@
 
 import '@mantine/core/styles.css';
-import Navbar from '@/components/Navbar';
 import './globals.css';
+import { FooterLinks } from '@/components/FooterLinks';
 
 import { ColorSchemeScript, MantineProvider} from '@mantine/core';
 import theme from '@/theme';
@@ -19,6 +19,8 @@ export default function RootLayout({ children }) {
       <body>
         <MantineProvider defaultColorScheme='light'>
           {children}
+
+          <FooterLinks />
         </MantineProvider> 
       </body>
     </html>

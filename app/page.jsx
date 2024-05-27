@@ -1,12 +1,10 @@
 'use client'
 
-import Link from 'next/link';
-import HeroImageRight from '../components/HeroImageRight';
 
 export default function Home() {
   return (
-    
-      <HeroImageRight />
+      <h1>hi</h1>
+      
     
   );
 }
