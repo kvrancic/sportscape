@@ -1,54 +1,60 @@
-'use client'
+'use client';
 
 import Link from 'next/link';
 import { Text, Space, Blockquote, Image, Title } from '@mantine/core';
 import HeroImageRight from './HeroImageRight';
 import { FeaturesCards } from './FeaturesCards';
 import { FaqWithImage } from './FaqWithImage';
-import { CardsCarousel } from './CardCarousel';
+import { CardsCarousel } from './CardsCarousel';
+import { AthleteTimeline} from './AthleteTimeline';
+import { VendorTimeline } from './VendorTimeline';
 import '@mantine/carousel/styles.css';
 
-
-export default function Home() {
-  
-
-
+export default function Welcome() {
   return (
-      <>
-        <HeroImageRight />
+    <>
+      <HeroImageRight />
 
-        <Space h="lg" />
+      <Space h="lg" />
 
-        <FeaturesCards />
+      <FeaturesCards />
 
-        <Space h="lg" />
+      <Space h="lg" />
 
+      <div className="flex justify-center content-center">
+        <div className="flex flex-col mx-auto xl:w-2/5 sm:mx-4">
+          
 
-        <div className="flex justify-center">
-          <div className="flex flex-col mx-auto xl:w-2/5">
+          <Space h="20" />
+
           <Blockquote color="orange" cite="– Sportscape Team" mt="xl">
-  Finding the perfect sports venue has never been easier – Sportscape connects you with the best facilities and fellow athletes effortlessly.
-</Blockquote>
+            Finding the perfect sports venue has never been easier – Sportscape connects you with the best facilities and fellow athletes effortlessly.
+          </Blockquote>
 
+          <Space h="50" />
 
-            <Space h="100" />
-
-            <Title align="center">Explore the sports we offer:</Title>
-
-            <Space h="lg" />
-
-            <CardsCarousel />
-
-            <Space h="lg" />
+          <div className="grid grid-cols-2 justify-center content-center space-x-10 mx-auto">
+            <AthleteTimeline />
+            <VendorTimeline />
           </div>
+
+          <Space h="100" />
+
+          <Title align="center">Explore the sports we offer:</Title>
+
+          <Space h="lg" />
+
+          <CardsCarousel/>
+
+          <Space h="lg" />
         </div>
+      </div>
 
-        
-
-        <FaqWithImage />
-
-      </>
       
-    
+
+      <Space h="lg" />
+
+      <FaqWithImage />
+    </>
   );
 }
