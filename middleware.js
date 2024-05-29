@@ -5,6 +5,8 @@ import { NextResponse } from 'next/server'
 
 
 export async function middleware(request) {
+  await updateSession(request);
+  
   if (request.nextUrl.pathname.startsWith('/dashboard')) {
     // This logic is only applied to /about
     const supabase = createClient()

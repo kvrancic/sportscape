@@ -34,7 +34,10 @@ export default function RootLayout({ children }) {
             ],
           },
         }}>
-          {children}
+          <div className="flex flex-col min-h-[65vh]">
+            {children}
+
+          </div>
 
           <FooterLinks />
         </MantineProvider> 
