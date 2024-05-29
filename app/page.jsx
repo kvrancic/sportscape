@@ -7,10 +7,10 @@ export default async function PrivatePage() {
 
   const { data, error } = await supabase.auth.getUser()
   if (error || !data?.user) {
-    redirect('/dashboard')
+    redirect('/welcome')
   }
   else{
-    redirect('/welcome')
+    redirect('/dashboard')
   }
 
   return <p>Hello {data.user.email}</p>

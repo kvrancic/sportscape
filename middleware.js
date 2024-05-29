@@ -5,7 +5,7 @@ import { NextResponse } from 'next/server'
 
 
 export async function middleware(request) {
-  if (request.nextUrl.pathname.startsWith('/welcome')) {
+  if (request.nextUrl.pathname.startsWith('/dashboard')) {
     // This logic is only applied to /about
     const supabase = createClient()
 
@@ -16,15 +16,15 @@ export async function middleware(request) {
     } 
   }
 
-  if (request.nextUrl.pathname.startsWith('/dashboard')) {
+  /* if (request.nextUrl.pathname.startsWith('/dashboard')) {
     // This logic is only applied to /dashboard
 
 
     return await updateSession(request)
-  }
+  } */
 }
 
-export const config = {
+export const config = {  
   matcher: [
     /*
      * Match all request paths except for the ones starting with:
