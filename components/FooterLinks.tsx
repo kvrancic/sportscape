@@ -24,13 +24,13 @@ export function FooterLinks() {
             <p className={'${barlow.className} text-3xl font-black'}>SPORTSCAPE</p>
           </div>
           <Text size="xs" c="dimmed" className={classes.description}>
-            Build fully functional accessible web applications faster than ever
+            Project built as a part of the Final Thesis at the Faculty of Electrical Engineering and Computing, University of Zagreb.
           </Text>
         </div>
       </Container>
       <Container className={classes.afterFooter}>
         <Text c="dimmed" size="sm">
-          © 2020 mantine.dev. All rights reserved.
+          © 2024 Karlo Vrancic
         </Text>
       </Container>
     </footer>

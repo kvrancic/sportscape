@@ -5,9 +5,6 @@
   padding-bottom: calc(var(--mantine-spacing-xl) * 2);
   background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
   border-top: rem(1px) solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-5));
-  position: absolute; 
-  width: 100%;
-  bottom: 0;
 }
 
 .logo {
@@ -27,6 +24,7 @@
 
 .description {
   margin-top: rem(5px);
+  text-align: center;
 
   @media (max-width: $mantine-breakpoint-sm) {
     margin-top: var(--mantine-spacing-xs);
