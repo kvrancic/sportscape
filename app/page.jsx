@@ -1,14 +1,20 @@
-'use client'
+import { redirect } from 'next/navigation'
 
+import { createClient } from '@/utils/supabase/server'
 
-export default function Home() {
-  return (
-      <h1>hi</h1>
-      
-    
-  );
+export default async function PrivatePage() {
+  const supabase = createClient()
+
+  const { data, error } = await supabase.auth.getUser()
+  if (error || !data?.user) {
+    redirect('/dashboard')
+  }
+  else{
+    redirect('/welcome')
+  }
+
+  return <p>Hello {data.user.email}</p>
 }
-
 
 
 /* 'use client'

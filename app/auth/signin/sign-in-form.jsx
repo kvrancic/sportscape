@@ -29,7 +29,7 @@ export default function SignInForm() {
       <SignIn
         supabaseClient={supabase}
         appearance={classAppearance}
-        providers={['google', 'facebook', 'twitter']}
+        //providers={['google', 'facebook', 'twitter']}
       />
       <div className="pt-4 text-center">
         <Link className="block pb-2 text-blue-500" href="/auth/forgotpassword">
