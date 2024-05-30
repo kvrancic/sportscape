@@ -32,13 +32,13 @@ export default function SignInForm() {
         providers={[]}
       />
       <div className="pt-4 text-center">
-        <Link className="block pb-2 text-blue-500" href="/auth/forgotpassword">
+        <Link className="block pb-2 text-blue-500" href="/forgotpassword">
           Forgot Password?
         </Link>
       </div>
       <div className="pt-4 text-center">
         Not registered yet?{" "}
-        <Link href="/auth/signup" className="underline text-blue-500">
+        <Link href="/signup" className="underline text-blue-500">
           Create an account
         </Link>
       </div>

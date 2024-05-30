@@ -23,20 +23,25 @@ export default function HeroImageRight() {
             </Title>
 
             <Text className={classes.description} mt={30}>
-            At Sportscape, we bridge the gap between venue owners and athletes. Whether you&#39;re looking to book a slot for a game or join an existing one, Sportscape makes it easy. Explore venues, connect with fellow sports enthusiasts, and enjoy seamless bookings.
+              At Sportscape, we bridge the gap between venue owners and athletes. Whether you&#39;re looking to book a slot for a game or join an existing one, Sportscape makes it easy. Explore venues, connect with fellow sports enthusiasts, and enjoy seamless bookings.
             </Text>
 
-            <Link href="/auth/signin">
-              <Button
-                variant="gradient"
-                gradient={{ from: '#d9480f', to: '#ffc078' }}
-                size="xl"
-                className={classes.control}
-                mt={40}
-              >
-                Get started
-              </Button>
-            </Link>
+            <div className={classes.controls}>
+              <Link href="/signup">
+                <Button
+                  variant="gradient"
+                  gradient={{ from: '#d9480f', to: '#ffc078' }}
+                  size="xl"
+                  className={classes.control}
+                  mt={40}
+                >
+                  Get started
+                </Button>
+              </Link>
+              <Link href="/login" className={classes.loginLink}>
+                Already have an account? Log in instead.
+              </Link>
+            </div>
           </div> 
         </div>
       </Container>

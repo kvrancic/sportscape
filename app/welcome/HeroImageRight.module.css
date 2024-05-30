@@ -83,3 +83,21 @@
 .gradientText {
   font-size: rem(48px);
 }
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* Adjust the gap between the button and the login link as needed */
+}
+
+.loginLink {
+  color: #d9480f; /* Adjust the color to match your design */
+  font-size: 0.8rem; /* Adjust the font size as needed */
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: 40px; /* Align the link with the button */
+}
+
+.loginLink:hover {
+  color: #ffc078; /* Adjust the hover color as needed */
+}

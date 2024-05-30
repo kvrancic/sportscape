@@ -1,41 +1,63 @@
-import { updateSession } from '@/utils/supabase/middleware'
+import { NextResponse } from 'next/server';
+import { createClient } from '@/utils/supabase/server';
+import { updateSession } from '@/utils/supabase/middleware';
 
-import { createClient } from '@/utils/supabase/server'
-import { NextResponse } from 'next/server'
+export async function middleware(req) {
+  const { nextUrl } = req;
+  const supabase = createClient();
 
+  // Update session
+  await updateSession(req);
 
-export async function middleware(request) {
-  await updateSession(request);
-  
-  if (request.nextUrl.pathname.startsWith('/dashboard')) {
-    // This logic is only applied to /about
-    const supabase = createClient()
+  // Get user
+  const { data: { user } } = await supabase.auth.getUser();
 
-    const { data, error } = await supabase.auth.getUser()
-    console.log(data)
-    if (error || !data?.user) {
-      return NextResponse.redirect(new URL("/login", request.url))
-    } 
+  if (!user) {
+    console.log('no user');
+    const url = new URL('/welcome', req.url);
+    return NextResponse.redirect(url);
   }
 
-  /* if (request.nextUrl.pathname.startsWith('/dashboard')) {
-    // This logic is only applied to /dashboard
+  // Get user profile
+  const { data: profile } = await supabase.from('profile').select('type').eq('id', user.id).single();
+  console.log(profile);
 
+  const pathname = nextUrl.pathname;
 
-    return await updateSession(request)
-  } */
+  // Redirect users based on their role
+  if (pathname === '/dashboard') {
+    if (profile.type === 'vendor') {
+      const url = new URL('/vendor/dashboard', req.url);
+      return NextResponse.redirect(url);
+    } else if (profile.type === 'athlete') {
+      const url = new URL('/athlete/dashboard', req.url);
+      return NextResponse.redirect(url);
+    }
+  }
+
+  // Protect /athlete/* routes
+  if (pathname.startsWith('/athlete')) {
+    if (profile.type !== 'athlete') {
+      const url = new URL('/welcome', req.url);
+      return NextResponse.redirect(url);
+    }
+  }
+
+  // Protect /vendor/* routes
+  if (pathname.startsWith('/vendor')) {
+    if (profile.type !== 'vendor') {
+      const url = new URL('/welcome', req.url);
+      return NextResponse.redirect(url);
+    }
+  }
+
+  return NextResponse.next();
 }
 
-export const config = {  
+export const config = {
   matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     * Feel free to modify this pattern to include more paths.
-     */
-    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
-
-  ],
-}
+    '/dashboard',
+    '/athlete/:path*',
+    '/vendor/:path*'
+  ], // Apply middleware only to /dashboard and its sub-routes, /athlete and its sub-routes, and /vendor and its sub-routes
+};

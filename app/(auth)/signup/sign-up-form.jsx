@@ -28,7 +28,7 @@ export default function SignUpForm() {
       />
       <div className="pt-4 text-center">
         Already have an account?{" "}
-        <Link href="/auth/signin" className="underline text-blue-500">
+        <Link href="/login" className="underline text-blue-500">
           Sign In
         </Link>
       </div>
