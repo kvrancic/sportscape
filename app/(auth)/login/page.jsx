@@ -6,10 +6,9 @@ import { createClient } from '@/utils/supabase/server'
 export default async function PrivatePage() {
   const supabase = createClient()
 
-  const { data, error } = await supabase.auth.getUser()
-  if (data) {
+  const { data:user, error } = await supabase.auth.getUser()
+  if (user.id) {
     redirect('/dashboard')
   }
-
-  return <SignInForm />;
+  else return <SignInForm />;
 }

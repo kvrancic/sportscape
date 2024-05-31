@@ -1,9 +1,10 @@
 import React from 'react'
+import {VendorGrid} from './VendorGrid'
 
-const HelloWorld = () => {
+const page = () => {
   return (
-    <div>HelloWorld</div>
+    <VendorGrid />
   )
 }
 
-export default HelloWorld
+export default page

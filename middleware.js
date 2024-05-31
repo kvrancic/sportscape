@@ -61,3 +61,4 @@ export const config = {
     '/vendor/:path*'
   ], // Apply middleware only to /dashboard and its sub-routes, /athlete and its sub-routes, and /vendor and its sub-routes
 };
+

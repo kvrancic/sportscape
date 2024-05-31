@@ -111,9 +111,10 @@ export default function FinishProfile({ user }) {
               setAvatarUrl(url);
               form.setFieldValue('profilePicture', url);
             }}
+            editingAllowed={true}
           />
           {form.errors.profilePicture && (
-            <Text color="red" size="xs">{form.errors.profilePicture}</Text>
+            <Text c="red" size="xs">{form.errors.profilePicture}</Text>
           )}
 
           <Radio.Group

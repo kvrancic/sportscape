@@ -2,10 +2,9 @@
 import React, { useEffect, useState } from 'react';
 import { createClient } from '@/utils/supabase/client';
 import Image from 'next/image';
-import { LoadingOverlay, Text } from '@mantine/core';
-import { IconEdit } from '@tabler/icons-react';
+import { Button, Text, LoadingOverlay, Group } from '@mantine/core';
 
-export default function Avatar({ uid, url, size, onUpload, editingAllowed = true }) {
+export default function Avatar({ uid, url, size, onUpload }) {
   const supabase = createClient();
   const [avatarUrl, setAvatarUrl] = useState(url);
   const [uploading, setUploading] = useState(false);
@@ -17,6 +16,7 @@ export default function Avatar({ uid, url, size, onUpload, editingAllowed = true
         if (error) {
           throw error;
         }
+
         const url = URL.createObjectURL(data);
         setAvatarUrl(url);
       } catch (error) {
@@ -28,8 +28,6 @@ export default function Avatar({ uid, url, size, onUpload, editingAllowed = true
   }, [url]);
 
   const uploadAvatar = async (event) => {
-    if (!editingAllowed) return;
-
     try {
       setUploading(true);
 
@@ -57,45 +55,37 @@ export default function Avatar({ uid, url, size, onUpload, editingAllowed = true
   };
 
   return (
-    <div className="relative group">
+    <div className="relative">
       <LoadingOverlay visible={uploading} overlayBlur={2} />
-      <div className="relative flex flex-col items-center space-y-2 cursor-pointer">
+      <div className="flex flex-col items-center space-y-2 cursor-pointer" onClick={() => document.getElementById('single').click()}>
         {avatarUrl ? (
           <Image
             width={size}
             height={size}
             src={avatarUrl}
             alt="Avatar"
-            className="rounded-full hover:opacity-75"
+            className="rounded-full"
             style={{ height: size, width: size, objectFit: 'cover' }}
-            onClick={editingAllowed ? () => document.getElementById('single').click() : null}
           />
         ) : (
           <div
-            className="bg-gray-400 flex items-center justify-center rounded-full hover:bg-gray-200"
+            className="bg-gray-200 flex items-center justify-center rounded-full"
             style={{ height: size, width: size }}
-            onClick={editingAllowed ? () => document.getElementById('single').click() : null}
           >
             <Text>No Image</Text>
           </div>
         )}
-        {editingAllowed && (
-          <input
-            style={{ visibility: 'hidden', position: 'absolute' }}
-            type="file"
-            id="single"
-            accept="image/*"
-            onChange={uploadAvatar}
-            disabled={uploading}
-          />
-        )}
-        {editingAllowed && (
-          <div style={{ width: size }}>
-            <label className="button primary block cursor-pointer" htmlFor="single">
-              {uploading ? 'Uploading ...' : 'Upload'}
-            </label>
-          </div>
-        )}
+        <input
+          style={{ visibility: 'hidden', position: 'absolute' }}
+          type="file"
+          id="single"
+          accept="image/*"
+          onChange={uploadAvatar}
+          disabled={uploading}
+        />
+        <Button variant="outline" color="orange" onClick={() => document.getElementById('single').click()}>
+          {uploading ? 'Uploading ...' : 'Upload'}
+        </Button>
       </div>
     </div>
   );

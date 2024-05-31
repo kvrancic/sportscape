@@ -15,7 +15,7 @@ export default function SignInForm() {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((event) => {
       if (event === "SIGNED_IN") {
-        router.push("/welcome");
+        router.push("/dashboard");
       }
     });
 
