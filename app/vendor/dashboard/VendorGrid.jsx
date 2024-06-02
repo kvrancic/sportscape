@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { useEffect, useState } from 'react';
 import { Grid, Container, Text, Card, Group, Button, Drawer, Burger, Stack } from '@mantine/core';
@@ -6,15 +6,17 @@ import { useDisclosure } from '@mantine/hooks';
 import { createClient } from '@/utils/supabase/client';
 import Avatar from '@/components/Avatar';
 import Link from 'next/link';
-import { IconPlus, IconEdit, IconLogout, IconArrowRight } from '@tabler/icons-react';
-import { StatsRing } from './StatsRing'; 
-import NewOfferButton from './NewOfferButton'
+import { IconPlus, IconEdit, IconLogout } from '@tabler/icons-react';
+import { StatsRing } from './StatsRing';
+import NewOfferButton from './NewOfferButton';
+import RequestAccordion from '@/components/RequestAccordion';
 
 export function VendorGrid() {
   const supabase = createClient();
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [statsData, setStatsData] = useState([]);
+  const [requests, setRequests] = useState([]);
   const [opened, { toggle, close }] = useDisclosure(false);
 
   useEffect(() => {
@@ -57,7 +59,7 @@ export function VendorGrid() {
             .eq('vendor_id', user.id)
         ]);
 
-        console.log('Data received: ' + availableCount + ' ' + unavailableCount + ' ' + requestsCount )
+        console.log('Data received: ' + availableCount + ' ' + unavailableCount + ' ' + requestsCount);
 
         setStatsData([
           { label: 'Available Offerings', stats: availableCount, progress: (availableCount / (availableCount + unavailableCount)) * 100 || 0, color: 'teal', icon: 'up' },
@@ -68,6 +70,24 @@ export function VendorGrid() {
     };
 
     fetchStats();
+  }, [user, supabase]);
+
+  useEffect(() => {
+    const fetchRequests = async () => {
+      const { data, error } = await supabase
+        .from('offer')
+        .select('offer_id, vendor_id, athlete_id, offering_id, is_available, sport')
+        .eq('vendor_id', user.id)
+        .order('created_at', { ascending: false })
+        .limit(3);
+      if (!error) {
+        setRequests(data);
+      }
+    };
+
+    if (user) {
+      fetchRequests();
+    }
   }, [user, supabase]);
 
   if (loading) {
@@ -121,8 +141,8 @@ export function VendorGrid() {
           <StatsRing data={statsData} />
         </Grid.Col>
         <Grid.Col span={{ base: 12, xs: 5 }}>
-          <Card shadow="md" p="lg" className="bg-white rounded-lg shadow-lg p-4 transition duration-300 hover:shadow-xl">
-            <Text>Other content</Text>
+          <Card shadow="lg" p="lg" className="bg-white rounded-lg shadow-lg round-4 p-6 transition duration-300 hover:shadow-xl transform hover:-translate-y-1">
+            <RequestAccordion title="REQUESTS" requests={requests} viewAllLink="/vendor/requests" />
           </Card>
         </Grid.Col>
         <Grid.Col span={{ base: 12, xs: 9 }}>
@@ -131,7 +151,7 @@ export function VendorGrid() {
           </Card>
         </Grid.Col>
         <Grid.Col span={{ base: 12, xs: 3 }}>
-          <NewOfferButton/>
+          <NewOfferButton />
         </Grid.Col>
       </Grid>
 
