@@ -18,8 +18,8 @@ export function StatsRing({ data }) {
   const stats = data.map((stat) => {
     const Icon = icons[stat.icon];
     return (
-      <Paper withBorder radius="md" p="xs" key={stat.label}>
-        <Group>
+      <Paper withBorder radius="md" p="xs" key={stat.label} className="transform hover:-translate-y-1 hover:shadow-xl transition duration-300 shadow-lg">
+        <Group className="group-hover:font-black hover:shadow-orange-500">
           <RingProgress
             size={80}
             roundCaps
@@ -35,13 +35,13 @@ export function StatsRing({ data }) {
             }
           />
 
-          <div>
+          <div className="group-hover:font-black hover:shadow-orange-500">
             <Text c="dimmed" size="xs" tt="uppercase" fw={700}>
               {stat.label}
             </Text>
-            <Text fw={700} size="xl">
+            <div className="font-bold text-xl ">
               {stat.stats}
-            </Text>
+            </div>
           </div>
         </Group>
       </Paper>

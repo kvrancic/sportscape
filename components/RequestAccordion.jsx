@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Accordion, ActionIcon, Center, Grid, Text, Card, Group, Button } from '@mantine/core';
-import { IconCheck, IconX, IconBallBasketball, IconBallFootball, IconBallVolleyball } from '@tabler/icons-react';
+import { IconCheck, IconX, IconBallBasketball, IconBallFootball, IconBallVolleyball, IconInfoCircle } from '@tabler/icons-react';
 import Link from 'next/link';
 
 function getSportIcon(sport) {
@@ -32,8 +32,9 @@ function AccordionControl(props) {
   );
 }
 
-function RequestAccordion({ title, requests, viewAllLink }) {
-  const items = requests.map((request) => (
+function RequestAccordion({ title, requests, viewAllLink, limit = 0 }) {
+  const limitedRequests = limit > 0 && requests ? requests.slice(0, limit) : requests;
+  const items = !requests ? '' : limitedRequests.map((request) => (
     <Accordion.Item key={request.offer_id} value={request.offer_id}>
       <AccordionControl icon={getSportIcon(request.sport)}>
         {request.athlete_id} - {request.offering_id}
@@ -46,16 +47,17 @@ function RequestAccordion({ title, requests, viewAllLink }) {
   ));
 
   return (
-    <div>
-      <Group position="apart" mb="md">
-        <Text size="xl" fw={600}>{title}</Text>
-        <Link href={viewAllLink} passHref>
-          <Button variant="outline" color="orange">View All</Button>
-        </Link>
-      </Group>
-      <Accordion variant="separated">
-        {items}
-      </Accordion>
+    <div >
+      {requests.length === 0 ? (
+        <Center style={{ color: 'gray', textAlign: 'center', flexDirection: 'column', marginTop:'120px' }}>
+          <IconInfoCircle size={64} />
+          <Text>No requests available</Text>
+        </Center>
+      ) : (
+        <Accordion variant="separated">
+          {items}
+        </Accordion>
+      )}
     </div>
   );
 }

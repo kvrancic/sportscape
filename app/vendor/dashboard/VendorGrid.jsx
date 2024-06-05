@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Grid, Container, Text, Card, Group, Button, Drawer, Burger, Stack } from '@mantine/core';
+import { Grid, Container, Text, Card, Group, Button, Drawer, Burger, Stack, ScrollArea } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { createClient } from '@/utils/supabase/client';
 import Avatar from '@/components/Avatar';
@@ -10,6 +10,7 @@ import { IconPlus, IconEdit, IconLogout } from '@tabler/icons-react';
 import { StatsRing } from './StatsRing';
 import NewOfferButton from './NewOfferButton';
 import RequestAccordion from '@/components/RequestAccordion';
+import CardGallery from './CardGallery';
 
 export function VendorGrid() {
   const supabase = createClient();
@@ -105,7 +106,7 @@ export function VendorGrid() {
 
   return (
     <div className='w-full p-10 mt-10'>
-      <Grid gutter="xs">
+      <Grid gutter="xs" className='xl:px-20'>
         <Grid.Col span={{ base: 12, xs: 4 }}>
           <Card shadow="lg" p="lg" className="bg-white rounded-lg shadow-lg p-6 transition duration-300 hover:shadow-xl transform hover:-translate-y-1">
             <div className="flex flex-col items-center space-y-4">
@@ -137,21 +138,29 @@ export function VendorGrid() {
           </div>
         </Grid.Col>
 
-        <Grid.Col span={{ base: 12, xs: 7 }}>
-          <StatsRing data={statsData} />
-        </Grid.Col>
-        <Grid.Col span={{ base: 12, xs: 5 }}>
-          <Card shadow="lg" p="lg" className="bg-white rounded-lg shadow-lg round-4 p-6 transition duration-300 hover:shadow-xl transform hover:-translate-y-1">
-            <RequestAccordion title="REQUESTS" requests={requests} viewAllLink="/vendor/requests" />
-          </Card>
-        </Grid.Col>
         <Grid.Col span={{ base: 12, xs: 9 }}>
-          <Card shadow="md" p="lg" className="bg-white rounded-lg shadow-lg p-4 transition duration-300 hover:shadow-xl">
-            <Text>Other content</Text>
-          </Card>
+          <StatsRing data={statsData} />
         </Grid.Col>
         <Grid.Col span={{ base: 12, xs: 3 }}>
           <NewOfferButton />
+        </Grid.Col>
+        <Grid.Col span={{ base: 12, xs: 7 }}>
+          <Card shadow="md" p="lg" className="bg-white rounded-lg shadow-lg p-4 transition duration-300 hover:shadow-xl transform hover:-translate-y-1 h-[470px]">
+            <CardGallery userId={user.id} />
+          </Card>
+        </Grid.Col>
+        <Grid.Col span={{ base: 12, xs: 5 }}>
+          <Card shadow="lg" p="lg" className="bg-white rounded-lg shadow-lg round-4 p-6 transition duration-300 hover:shadow-xl transform hover:-translate-y-1 h-[470px]">
+            <ScrollArea h={400}>
+            <Group position="apart" mb="md" >
+              <Text size="xl" fw={700}>REQUESTS</Text>
+              <Link href="/vendor/requests" passHref>
+                <Button variant="outline" color="orange">View All</Button>
+              </Link>
+            </Group>
+              <RequestAccordion title="REQUESTS" requests={requests} viewAllLink="/vendor/requests" />
+            </ScrollArea>
+          </Card>
         </Grid.Col>
       </Grid>
 
