@@ -153,6 +153,9 @@ export default function FinishProfile({ user }) {
               <Textarea
                 label="About Me"
                 placeholder="Tell us about yourself"
+                autosize
+                minRows={4}
+                maxRows={8}
                 {...form.getInputProps('aboutMe')}
                 classNames={{ input: 'focus:border-orange-500 focus:ring-orange-500' }}
               />

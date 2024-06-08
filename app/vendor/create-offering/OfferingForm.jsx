@@ -1,13 +1,13 @@
-'use client';
-
+'use client'
 import React, { useState, useEffect } from 'react';
 import { createClient } from '@/utils/supabase/client';
 import { useForm } from '@mantine/form';
 import { TextInput, MultiSelect, Button, Textarea, Container, Title, Text, Group } from '@mantine/core';
 import { TimeInput } from '@mantine/dates';
-import { IconClock } from '@tabler/icons-react';
+import { IconClock, IconMapPin, IconList, IconUser, IconTeapot } from '@tabler/icons-react';
 import { useRouter } from 'next/navigation';
 import { v4 as uuidv4 } from 'uuid';
+import GoogleAddressSearch from '@/components/GoogleAddressSearch';
 
 export function OfferingForm({ user }) {
   const supabase = createClient();
@@ -15,13 +15,14 @@ export function OfferingForm({ user }) {
   const [loading, setLoading] = useState(false);
   const [avatarUrl, setAvatarUrl] = useState('');
   const [uploading, setUploading] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const placeholderImage = 'https://via.placeholder.com/600x400.png?text=Upload+an+Image';
 
   const form = useForm({
     initialValues: {
       name: '',
       address: '',
-      postcode: '',
+      coordinates: { lat: '', lng: '' },
       offeringPhoto: '',
       description: '',
       startTime: '',
@@ -32,8 +33,6 @@ export function OfferingForm({ user }) {
 
     validate: {
       name: (value) => (value ? null : 'Name is required'),
-      address: (value) => (value ? null : 'Address is required'),
-      postcode: (value) => (value ? null : 'Postcode is required'),
       description: (value) => (value ? null : 'Description is required'),
       startTime: (value) => (value ? null : 'Start time is required'),
       endTime: (value) => (value ? null : 'End time is required'),
@@ -113,7 +112,8 @@ export function OfferingForm({ user }) {
         vendor_id: user.id,
         name: values.name,
         address: values.address,
-        postcode: values.postcode,
+        lat: values.coordinates.lat,
+        lng: values.coordinates.lng,
         created_at: new Date().toISOString(),
         is_available: true,
         offering_photo: 'https://duelkbjyxfgctjrijjoe.supabase.co/storage/v1/object/public/offerings/' + values.offeringPhoto,
@@ -140,14 +140,14 @@ export function OfferingForm({ user }) {
   const sportTypes = ['Basketball 🏀', 'Football ⚽', 'Volleyball 🏐'];
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-orange-400 via-white to-orange-400 flex items-center justify-center py-12">
-      <Container size="lg" className="bg-white rounded-lg shadow-lg p-6 space-y-6">
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12">
+      <Container size="lg" className="bg-white rounded-lg shadow-2xl p-6 space-y-6 xl:min-w-[800px]">
         <Title className="text-3xl font-bold text-center text-orange-600">Create New Offering</Title>
         <Text className="text-center text-gray-600">Fill out the details to create a new offering.</Text>
 
         <div className="relative">
           {avatarUrl ? (
-            <div className="relative w-full h-64 rounded-md shadow-md">
+            <div className="relative w-full h-[400px] rounded-md shadow-md">
               <img src={avatarUrl} alt="Offering Photo" className="w-full h-full object-cover rounded-md" />
               <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity">
                 <input
@@ -195,22 +195,16 @@ export function OfferingForm({ user }) {
             required
             classNames={{ input: 'focus:border-orange-500 focus:ring-orange-500' }}
           />
-          <Group grow>
-            <TextInput
-              label="Address"
-              placeholder="Enter the address"
-              {...form.getInputProps('address')}
-              required
-              classNames={{ input: 'focus:border-orange-500 focus:ring-orange-500' }}
-            />
-            <TextInput
-              label="Postcode"
-              placeholder="Enter the postcode"
-              {...form.getInputProps('postcode')}
-              required
-              classNames={{ input: 'focus:border-orange-500 focus:ring-orange-500' }}
-            />
-          </Group>
+          <div>
+            <div className='flex gap-2 text-sm'>
+              <IconMapPin size={16} />
+              <p className="ml-2 text-sm font-medium">Address</p>
+            </div>
+            <GoogleAddressSearch onSelect={(val) => {
+              form.setFieldValue('address', val.address);
+              form.setFieldValue('coordinates', val.coordinates);
+            }} />
+          </div>
           <Textarea
             label="Description"
             placeholder="Enter a description for the offering"

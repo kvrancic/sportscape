@@ -65,7 +65,7 @@ export function VendorGrid() {
         setStatsData([
           { label: 'Available Offerings', stats: availableCount, progress: (availableCount / (availableCount + unavailableCount)) * 100 || 0, color: 'teal', icon: 'up' },
           { label: 'Unavailable Offerings', stats: unavailableCount, progress: (unavailableCount / (availableCount + unavailableCount)) * 100 || 0, color: 'red', icon: 'down' },
-          { label: 'Total Requests', stats: requestsCount, progress: 100, color: 'blue', icon: 'up' },
+          { label: 'Received Requests', stats: requestsCount, progress: 100, color: 'blue', icon: 'down' },
         ]);
       }
     };
@@ -120,14 +120,14 @@ export function VendorGrid() {
 
         <Grid.Col span={{ base: 12, xs: 8 }} className="">
           <div className='hidden lg:flex mt-[180px] justify-end gap-12 px-20'>
-            <Link href="/vendor/create-offering" passHref className='flex gap-1 text-orange-500 text-md font-bold text-justify items-end hover:text-blue-500 hover:scale-105'>
+            {/* <Link href="/vendor/create-offering" passHref className='flex gap-1 text-orange-500 text-md font-bold text-justify items-end hover:text-blue-500 hover:scale-105'>
               <IconPlus />
               Create New Offering
             </Link>
             <Link href="/edit-profile" passHref className='flex gap-1 text-orange-500 text-md font-bold text-justify items-end hover:text-blue-500 hover:scale-105'>
               <IconEdit />
               Edit Profile
-            </Link>
+            </Link> */}
             <Button
               onClick={handleSignOut}
               className="bg-orange-500 hover:bg-blue-600 transition-transform transform hover:scale-105"
