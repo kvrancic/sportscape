@@ -105,7 +105,7 @@ export function VendorGrid() {
   };
 
   return (
-    <div className='w-full p-10 mt-10'>
+    <div className='w-full p-10 mt-10 mb-[180px]'>
       <Grid gutter="xs" className='xl:px-20'>
         <Grid.Col span={{ base: 12, xs: 4 }}>
           <Card shadow="lg" p="lg" className="bg-white rounded-lg shadow-lg p-6 transition duration-300 hover:shadow-xl transform hover:-translate-y-1">
