@@ -45,12 +45,12 @@ export function VendorGrid() {
       if (user) {
         const [{ count: availableCount }, { count: unavailableCount }, { count: requestsCount }] = await Promise.all([
           supabase
-            .from('offering')
+            .from('slot')
             .select('*', { count: 'exact' })
             .eq('vendor_id', user.id)
             .eq('is_available', true),
           supabase
-            .from('offering')
+            .from('slot')
             .select('*', { count: 'exact' })
             .eq('vendor_id', user.id)
             .eq('is_available', false),
@@ -63,8 +63,8 @@ export function VendorGrid() {
         console.log('Data received: ' + availableCount + ' ' + unavailableCount + ' ' + requestsCount);
 
         setStatsData([
-          { label: 'Available Offerings', stats: availableCount, progress: (availableCount / (availableCount + unavailableCount)) * 100 || 0, color: 'teal', icon: 'up' },
-          { label: 'Unavailable Offerings', stats: unavailableCount, progress: (unavailableCount / (availableCount + unavailableCount)) * 100 || 0, color: 'red', icon: 'down' },
+          { label: 'Available Slots', stats: availableCount, progress: (availableCount / (availableCount + unavailableCount)) * 100 || 0, color: 'teal', icon: 'up' },
+          { label: 'Unavailable Slots', stats: unavailableCount, progress: (unavailableCount / (availableCount + unavailableCount)) * 100 || 0, color: 'red', icon: 'down' },
           { label: 'Received Requests', stats: requestsCount, progress: 100, color: 'blue', icon: 'down' },
         ]);
       }
@@ -77,7 +77,7 @@ export function VendorGrid() {
     const fetchRequests = async () => {
       const { data, error } = await supabase
         .from('offer')
-        .select('offer_id, vendor_id, athlete_id, offering_id, is_available, sport')
+        .select('offer_id, vendor_id, athlete_id, slot_id, is_available, sport')
         .eq('vendor_id', user.id)
         .order('created_at', { ascending: false })
         .limit(3);

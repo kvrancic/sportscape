@@ -30,7 +30,7 @@ const OfferingsTable = () => {
 
     const fetchOfferings = async () => {
       const { data, error } = await supabase
-        .from('offering')
+        .from('slot')
         .select('*')
         .eq('vendor_id', userId)
         .order('created_at', { ascending: false });
@@ -71,7 +71,6 @@ const OfferingsTable = () => {
             <tr>
               <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Name</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Address</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Postcode</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Start Time</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">End Time</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Availability</th>
@@ -82,7 +81,6 @@ const OfferingsTable = () => {
               <tr key={offering.offering_id} onClick={() => handleRowClick(offering)} className="hover:bg-gray-100 cursor-pointer">
                 <td className="px-6 py-4 whitespace-nowrap">{offering.name}</td>
                 <td className="px-6 py-4 whitespace-nowrap">{offering.address}</td>
-                <td className="px-6 py-4 whitespace-nowrap">{offering.postcode}</td>
                 <td className="px-6 py-4 whitespace-nowrap">{formatTime(offering.start_time)}</td>
                 <td className="px-6 py-4 whitespace-nowrap">{formatTime(offering.end_time)}</td>
                 <td className="px-6 py-4 whitespace-nowrap">
@@ -100,15 +98,11 @@ const OfferingsTable = () => {
         <Modal opened={opened} onClose={() => setOpened(false)} title="Offering Details" size="lg" centered>
           <div className="text-center mb-4">
             <Image
-              src={selectedOffering.offering_photo ? `${selectedOffering.offering_photo}` : 'https://via.placeholder.com/600x400.png?text=No+Image'}
+              src={selectedOffering.slot_photo ? `${selectedOffering.slot_photo}` : 'https://via.placeholder.com/600x400.png?text=No+Image'}
               height={200}
               alt={selectedOffering.name}
               withPlaceholder
             />
-          </div>
-          <div className="mb-4">
-            <Text fw={700} size="lg">{selectedOffering.name}</Text>
-            <Text size="sm" c="dimmed">{selectedOffering.address}, {selectedOffering.postcode}</Text>
           </div>
           <div className="mb-4">
             <Text fw={700} size="lg">Hours: ⏰ {formatTime(selectedOffering.start_time)} - {formatTime(selectedOffering.end_time)}</Text>

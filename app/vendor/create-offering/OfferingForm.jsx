@@ -107,8 +107,8 @@ export function OfferingForm({ user }) {
         return acc;
       }, {});
 
-      const { error: offeringError } = await supabase.from('offering').insert({
-        offering_id: offeringId,
+      const { error: offeringError } = await supabase.from('slot').insert({
+        slot_id: offeringId,
         vendor_id: user.id,
         name: values.name,
         address: values.address,
@@ -116,7 +116,7 @@ export function OfferingForm({ user }) {
         lng: values.coordinates.lng,
         created_at: new Date().toISOString(),
         is_available: true,
-        offering_photo: 'https://duelkbjyxfgctjrijjoe.supabase.co/storage/v1/object/public/offerings/' + values.offeringPhoto,
+        slot_photo: 'https://duelkbjyxfgctjrijjoe.supabase.co/storage/v1/object/public/offerings/' + values.offeringPhoto,
         description: values.description,
         start_time: values.startTime,
         end_time: values.endTime,

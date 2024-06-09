@@ -18,7 +18,7 @@ function OfferingsGallery({ userId, cardLimit = 3 }) {
 
     async function fetchOfferings() {
       const { data, error } = await supabase
-        .from('offering')
+        .from('slot')
         .select('*')
         .eq('vendor_id', userId)
         .order('created_at', { ascending: false })
@@ -34,11 +34,11 @@ function OfferingsGallery({ userId, cardLimit = 3 }) {
   }, [userId]);
 
   const deleteOffering = async (id) => {
-    const { error } = await supabase.from('offering').delete().eq('offering_id', id);
+    const { error } = await supabase.from('slot').delete().eq('slot_id', id);
     if (error) {
       console.error('Error deleting offering:', error);
     } else {
-      setOfferings(offerings.filter((offering) => offering.offering_id !== id));
+      setOfferings(offerings.filter((offering) => offering.slot_id !== id));
     }
   };
 
@@ -64,7 +64,7 @@ function OfferingsGallery({ userId, cardLimit = 3 }) {
       <div className="justify-center mt-5">
         <div className='flex gap-5 flex-col xl:flex-row justify-center'>
           {offerings.slice(visibleIndex, visibleIndex + cardLimit).map((offering) => (
-            <OfferingCard key={offering.offering_id} offering={offering} onDelete={deleteOffering} />
+            <OfferingCard key={offering.slot_id} offering={offering} onDelete={deleteOffering} />
           ))}
         </div>
       </div>

@@ -17,19 +17,19 @@ function OfferingCard({ offering, onDelete, userId }) {
     const fetchRequests = async () => {
       const { data, error } = await supabase
         .from('offer')
-        .select('offer_id, vendor_id, athlete_id, offering_id, is_available, sport')
-        .eq('offering_id', offering.offering_id)
+        .select('offer_id, vendor_id, athlete_id, slot_id, is_available, sport')
+        .eq('slot_id', offering.slot_id)
         .order('created_at', { ascending: false });
       if (!error) {
         setRequests(data);
       }
     };
     fetchRequests();
-  }, [supabase, offering.offering_id]);
+  }, [supabase, offering.slot_id]);
 
   const absoluteImageUrl = (url) => {
     return url.startsWith('http') ? url : `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/${url}`;
-  };
+  }; 
 
   const getSportEmojis = () => {
     let emojis = '';
@@ -49,7 +49,7 @@ function OfferingCard({ offering, onDelete, userId }) {
       <Card shadow="sm" padding="md" radius="md" withBorder>
         <Card.Section onClick={open}>
           <Image
-            src={absoluteImageUrl(offering.offering_photo) || 'https://via.placeholder.com/600x400.png?text=No+Image'}
+            src={absoluteImageUrl(offering.slot_photo) || 'https://via.placeholder.com/600x400.png?text=No+Image'}
             h={180}
             w={300}
             alt={offering.name}
@@ -63,7 +63,7 @@ function OfferingCard({ offering, onDelete, userId }) {
             color="red"
             onClick={(e) => {
               e.stopPropagation();
-              onDelete(offering.offering_id);
+              onDelete(offering.slot_id);
             }}
           >
             <IconTrash size={18} />
@@ -85,7 +85,7 @@ function OfferingCard({ offering, onDelete, userId }) {
         <Modal opened={opened} onClose={close} title="Offering Details" size="lg" centered>
           <div style={{ textAlign: 'center', marginBottom: theme.spacing.md }}>
             <Image
-              src={absoluteImageUrl(offering.offering_photo) || 'https://via.placeholder.com/600x400.png?text=No+Image'}
+              src={absoluteImageUrl(offering.slot_photo) || 'https://via.placeholder.com/600x400.png?text=No+Image'}
               height={200}
               alt={offering.name}
               withPlaceholder

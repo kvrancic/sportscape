@@ -16,7 +16,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-white shadow-md w-full z-10 mb-10">
+    <nav className="shadow-md w-full z-10 mb-10">
       <div className="max-w-[1500px] mx-auto">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
@@ -35,25 +35,25 @@ export default function Navbar() {
           <div className="hidden md:flex items-center space-x-4 gap-12 transition-all duration-300 ease-in-out">
               <a
                 href="/athlete/dashboard"
-                className="text-black hover:text-orange-500 transform hover:scale-110 transition-all duration-300 ease-in-out"
+                className=" hover:text-orange-500 transform hover:scale-110 transition-all duration-300 ease-in-out"
               >
                 Dashboard
               </a>
               <a
                 href="/athlete/buy"
-                className="text-black hover:text-orange-500 transform hover:scale-110 transition-all duration-300 ease-in-out"
+                className=" hover:text-orange-500 transform hover:scale-110 transition-all duration-300 ease-in-out"
               >
                 Buy Slots
               </a>
               <a
                 href="/athlete/join"
-                className="text-black hover:text-orange-500 transform hover:scale-110 transition-all duration-300 ease-in-out"
+                className=" hover:text-orange-500 transform hover:scale-110 transition-all duration-300 ease-in-out"
               >
                 Join Slots
               </a>
               <a
                 href="/myprofile"
-                className="text-black hover:text-orange-500 transform hover:scale-110 transition-all duration-300 ease-in-out"
+                className=" hover:text-orange-500 transform hover:scale-110 transition-all duration-300 ease-in-out"
               >
                 My Profile
               </a>
@@ -68,7 +68,7 @@ export default function Navbar() {
           <div className="flex md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-black hover:text-orange-500 focus:outline-none"
+              className=" hover:text-orange-500 focus:outline-none"
             >
               {isOpen ? (
                 <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
