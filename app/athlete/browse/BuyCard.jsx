@@ -1,3 +1,5 @@
+import { useRouter } from 'next/navigation';
+
 /* eslint-disable @next/next/no-img-element */
 // /components/FacilityCard.js
 const sportsEmojis = {
@@ -9,6 +11,7 @@ const sportsEmojis = {
 const dayAbbreviations = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 
 const BuyCard = ({ facility }) => {
+  const router = useRouter();
   const availableDays = [
     facility.monday_available,
     facility.tuesday_available,
@@ -18,6 +21,10 @@ const BuyCard = ({ facility }) => {
     facility.saturday_available,
     facility.sunday_available,
   ];
+
+  const handleShowMore = () => {
+    router.push(`slot/${facility.slot_id}`);
+  };
 
   return (
     <div className="bg-white shadow-xl rounded-md overflow-hidden border border-gray-200">
@@ -53,7 +60,8 @@ const BuyCard = ({ facility }) => {
       </div>
 
       <div className="p-4 border-t border-gray-300 flex justify-between items-center">
-        <button className="bg-orange-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 focus:outline-none">
+        <button className="bg-orange-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 focus:outline-none"
+          onClick={handleShowMore}>
           Show More
         </button>
       </div>

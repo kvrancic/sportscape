@@ -3,7 +3,7 @@ import BuyCard from './BuyCard';
 import { Pagination } from '@mantine/core';
 import { createClient } from '@/utils/supabase/client';
 
-const Gallery = ({ searchQuery, sportTypes, daysOfWeek, startTimeRange, endTimeRange, onlyWithImage }) => {
+const Gallery = ({ searchQuery, sportTypes, daysOfWeek, startTimeRange, endTimeRange, onlyWithImage, isAvailable }) => {
   const supabase = createClient();
   const [activePage, setActivePage] = useState(1);
   const itemsPerPage = 12;
@@ -15,7 +15,7 @@ const Gallery = ({ searchQuery, sportTypes, daysOfWeek, startTimeRange, endTimeR
       let query = supabase
         .from('slot')
         .select('*', { count: 'exact' })
-        .eq('is_available', true);
+        .eq('is_available', isAvailable);
 
       if (onlyWithImage) {
         query = query.not('slot_photo', 'is', null);
@@ -55,7 +55,7 @@ const Gallery = ({ searchQuery, sportTypes, daysOfWeek, startTimeRange, endTimeR
     };
 
     fetchFacilities();
-  }, [activePage, searchQuery, sportTypes, daysOfWeek, startTimeRange, endTimeRange, onlyWithImage]);
+  }, [activePage, searchQuery, sportTypes, daysOfWeek, startTimeRange, endTimeRange, onlyWithImage, isAvailable]);
 
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 

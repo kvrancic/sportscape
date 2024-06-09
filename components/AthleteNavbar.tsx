@@ -17,11 +17,11 @@ export default function Navbar() {
 
   return (
     <nav className="shadow-md w-full z-10 mb-10">
-      <div className="max-w-[1500px] mx-auto">
+      <div className="max-w-[1800px] mx-auto">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <div className="flex-shrink-0 relative">
-              <div className="flex items-center group">
+              <div className="flex items-center group px-8">
                 <img
                   src="https://duelkbjyxfgctjrijjoe.supabase.co/storage/v1/object/public/public-storage/Picture2.png"
                   alt="logo"
@@ -40,19 +40,13 @@ export default function Navbar() {
                 Dashboard
               </a>
               <a
-                href="/athlete/buy"
+                href="/athlete/browse"
                 className=" hover:text-orange-500 transform hover:scale-110 transition-all duration-300 ease-in-out"
               >
-                Buy Slots
+                Browse Slots
               </a>
               <a
-                href="/athlete/join"
-                className=" hover:text-orange-500 transform hover:scale-110 transition-all duration-300 ease-in-out"
-              >
-                Join Slots
-              </a>
-              <a
-                href="/myprofile"
+                href="/athlete/myprofile"
                 className=" hover:text-orange-500 transform hover:scale-110 transition-all duration-300 ease-in-out"
               >
                 My Profile
@@ -65,7 +59,7 @@ export default function Navbar() {
               </button>
             </div>
 
-          <div className="flex md:hidden">
+          <div className="flex md:hidden px-8">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className=" hover:text-orange-500 focus:outline-none"
@@ -86,10 +80,9 @@ export default function Navbar() {
 
       {isOpen && (
         <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <div className="px-6 pt-2 pb-3 space-y-1 sm:px-3">
             <a href="#" className="block px-3 py-2 rounded-md text-base font-medium text-black hover:bg-orange-500 hover:text-white">Dashboard</a>
-            <a href="#" className="block px-3 py-2 rounded-md text-base font-medium text-black hover:bg-orange-500 hover:text-white">Buy Slots</a>
-            <a href="#" className="block px-3 py-2 rounded-md text-base font-medium text-black hover:bg-orange-500 hover:text-white">Join Slots</a>
+            <a href="#" className="block px-3 py-2 rounded-md text-base font-medium text-black hover:bg-orange-500 hover:text-white">Browse Slots</a>
             <a href="#" className="block px-3 py-2 rounded-md text-base font-medium text-black hover:bg-orange-500 hover:text-white">My Profile</a>
             <a href="#" className="block px-3 py-2 rounded-md text-base font-medium text-black hover:bg-orange-500 hover:text-white">Log Out</a>
           </div>

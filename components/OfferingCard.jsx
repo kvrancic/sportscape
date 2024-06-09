@@ -58,16 +58,15 @@ function OfferingCard({ offering, onDelete, userId }) {
 
         <Group position="apart" mt="md" mb="xs">
           <Text size="lg" fw={700}>{offering.name}</Text>
-          <Button
-            variant="subtle"
-            color="red"
+          <button
+            className="absolute top-2 right-2 bg-white text-red-500 rounded-full p-2 focus:outline-none bg-opacity-70 hover:bg-opacity-100 hover:translate-y-0.5 transition-transform duration-150 ease-in-out" 
             onClick={(e) => {
               e.stopPropagation();
               onDelete(offering.slot_id);
             }}
-          >
+        >
             <IconTrash size={18} />
-          </Button>
+          </button>
         </Group>
 
         <Text size="sm" c="dimmed">
