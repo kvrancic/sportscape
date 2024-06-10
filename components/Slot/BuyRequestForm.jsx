@@ -115,7 +115,7 @@ const BuyRequestForm = ({ slot }) => {
     } else if (existingRequest && existingRequest.status === 'rejected') {
       return (
         <div className="text-center">
-          <img src="/fail.svg" alt="rejected" className="mx-auto" height={250} width={250} />
+          <img src="/fail.svg" alt="Rejected" className="mx-auto" height={250} width={250} />
           <p className="text-gray-700 font-bold mt-4">{description}</p>
         </div>
       );
