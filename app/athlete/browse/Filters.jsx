@@ -40,6 +40,7 @@ function Filters({
               min={0}
               max={24}
               step={0.25}
+              minRange={1}
               marks={[
                 { value: 0, label: '00:00' },
                 { value: 6, label: '06:00' },
@@ -59,6 +60,7 @@ function Filters({
               min={0}
               max={24}
               step={0.25}
+              minRange={1}
               marks={[
                 { value: 0, label: '00:00' },
                 { value: 6, label: '06:00' },

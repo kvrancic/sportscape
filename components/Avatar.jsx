@@ -72,11 +72,11 @@ export default function Avatar({ uid, url, size, onUpload, editingAllowed = true
           />
         ) : (
           <div
-            className="bg-gray-400 flex items-center justify-center rounded-full hover:bg-gray-200"
+            className="bg-gray-200 flex items-center justify-center rounded-full hover:bg-gray-200"
             style={{ height: size, width: size }}
             onClick={editingAllowed ? () => document.getElementById('single').click() : null}
           >
-            <Text>No Image</Text>
+            <p className='font-bold justify-center text-center'>Click here to upload</p>
           </div>
         )}
         {editingAllowed && (
@@ -88,13 +88,6 @@ export default function Avatar({ uid, url, size, onUpload, editingAllowed = true
             onChange={uploadAvatar}
             disabled={uploading}
           />
-        )}
-        {editingAllowed && (
-          <div style={{ width: size }}>
-            <label className="button primary block cursor-pointer" htmlFor="single">
-              {uploading ? 'Uploading ...' : 'Upload'}
-            </label>
-          </div>
         )}
       </div>
     </div>
