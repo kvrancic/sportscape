@@ -18,7 +18,7 @@ const OwnedSlot = ({ slot }) => {
       case 'Basic Info':
         return <SlotBasicInfo slot={slot} />;
       case 'People & Reviews':
-        return <BoughtSlotInfo slot_id={slot.slot_id}/>;
+        return <BoughtSlotInfo slot_id={slot.slot_id} addReview={false}/>;
       case 'Chat':
         return <Chat slot_id={slot.slot_id} />;
       case 'Edit Slot':

@@ -5,7 +5,7 @@ import { createClient } from '@/utils/supabase/client';
 import Reviews from './Reviews';
 import ListPeople from './ListPeople';
 
-const BoughtSlotInfo = ({ slot_id }) => {
+const BoughtSlotInfo = ({ slot_id, addReview }) => {
   const supabase = createClient();
   const [reviews, setReviews] = useState([]);
   const [people, setPeople] = useState([]);
@@ -62,8 +62,7 @@ const BoughtSlotInfo = ({ slot_id }) => {
   return (
     <div className="flex flex-col 2xl:flex-row gap-4 mt-4">
       <div className="flex-1 shadow-md p-4 rounded-lg">
-        <h2 className="font-bold text-center text-xl">REVIEWS</h2>
-        <Reviews reviews={reviews} addReview={false} />
+        <Reviews reviews={reviews} addReview={addReview} slot_id={slot_id} />
       </div>
       <div className="flex-none 2xl:w-2/4 shadow-md p-4 rounded-lg">
         <h2 className="font-bold text-center text-xl">MEMBERS</h2>

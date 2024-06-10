@@ -25,7 +25,7 @@ function AccordionControl({ request, status }) {
       {status === 'accepted' && (
         <IconCheck size={24} color="green" />
       )}
-      {status === 'declined' && (
+      {status === 'rejected' && (
         <IconX size={24} color="red" />
       )}
     </Center>
@@ -87,7 +87,7 @@ const JoinRequests = ({ slot_id }) => {
   const handleDecline = async (slot_id, athlete_id) => {
     const { data, error } = await supabase
       .from('slot_request')
-      .update({ status: 'declined' })
+      .update({ status: 'rejected' })
       .eq('slot_id', slot_id)
       .eq('athlete_id', athlete_id);
 
@@ -97,7 +97,7 @@ const JoinRequests = ({ slot_id }) => {
       setJoinRequests((prevRequests) =>
         prevRequests.map((request) =>
           request.slot_id === slot_id && request.athlete_id === athlete_id
-            ? { ...request, status: 'declined' }
+            ? { ...request, status: 'rejected' }
             : request
         )
       );
@@ -119,7 +119,7 @@ const JoinRequests = ({ slot_id }) => {
         className={`p-4 rounded-lg ${
           request.status === 'accepted'
             ? 'border-2 border-green-500'
-            : request.status === 'declined'
+            : request.status === 'rejected'
             ? 'border-2 border-red-500'
             : ''
         }`}
