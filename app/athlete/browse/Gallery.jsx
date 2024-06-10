@@ -60,7 +60,7 @@ const Gallery = ({ searchQuery, sportTypes, daysOfWeek, startTimeRange, endTimeR
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   return (
-    <div className="w-full mt-12">
+    <div className="w-[95%] mt-12">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
         {facilities.map((facility) => (
           <BuyCard key={facility.slot_id} facility={facility} />

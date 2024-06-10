@@ -74,15 +74,20 @@ export function VendorGrid() {
   }, [user, supabase]);
 
   useEffect(() => {
+    console.log('User:', user);
+    console.log('Fetching requests...');
+
     const fetchRequests = async () => {
       const { data, error } = await supabase
         .from('offer')
-        .select('offer_id, vendor_id, athlete_id, slot_id, is_available, sport')
+        .select('*')
         .eq('vendor_id', user.id)
-        .order('created_at', { ascending: false })
         .limit(3);
       if (!error) {
+        console.log('Requests:', data);
         setRequests(data);
+      } else{
+        console.error('Error fetching requests:', error); 
       }
     };
 

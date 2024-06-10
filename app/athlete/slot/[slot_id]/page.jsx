@@ -73,11 +73,10 @@ const SlotDetails = ({params}) => {
   const userHasRequested = slotRequests.some(request => request.user_id === currentUser.id);
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold">Slot Details for {slot.name}</h1>
+    <div className="container mx-auto p-4 mb-20">
       <SlotBasicInfo slot={slot} />
       {slot.is_available ? (
-        <BuyRequestForm slot={slot} />
+        <BuyRequestForm slot={slot}/>
       ) : isOwner ? (
         <OwnedSlot slot={slot}>
           <BoughtSlotInfo slot={slot} addReview={false} />
