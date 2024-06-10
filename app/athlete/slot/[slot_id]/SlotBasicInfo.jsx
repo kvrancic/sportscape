@@ -1,7 +1,7 @@
 // /components/slot/SlotBasicInfo.js
 import React from 'react';
 import Link from 'next/link';
-import GoogleMapComponent from '../GoogleMapComponent';
+import GoogleMapComponent from '../../../../components/GoogleMapComponent';
 
 const dayAbbreviations = ['M😠', 'T😩', 'W😫', 'T😡', 'F😊', 'S🎉', 'S😌'];
 

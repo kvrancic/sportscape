@@ -3,16 +3,16 @@
 
 import { useEffect, useState } from 'react';
 import {createClient} from '@/utils/supabase/client';
-import SlotBasicInfo from '@/components/slot/SlotBasicInfo';
-import BuyRequestForm from '@/components/slot/BuyRequestForm';
-import OwnedSlot from '@/components/slot/OwnedSlot';
-import ToJoinSlot from '@/components/slot/ToJoinSlot';
-import JoinedSlot from '@/components/slot/JoinedSlot';
-import BoughtSlotInfo from '@/components/slot/BoughtSlotInfo';
-import Chat from '@/components/slot/Chat';
-import Reviews from '@/components/slot/Reviews';
-import EditSlot from '@/components/slot/EditSlot';
-import JoinRequestForm from '@/components/slot/JoinRequestForm';
+import SlotBasicInfo from './SlotBasicInfo';
+import BuyRequestForm from './BuyRequestForm';
+import OwnedSlot from './OwnedSlot';
+import ToJoinSlot from './ToJoinSlot';
+import JoinedSlot from './JoinedSlot';
+import BoughtSlotInfo from './BoughtSlotInfo';
+import Chat from './Chat';
+import Reviews from './Reviews';
+import EditSlot from './EditSlot';
+import JoinRequestForm from './JoinRequestForm';
 import { Loader } from '@mantine/core';
 
 const SlotDetails = ({params}) => {
