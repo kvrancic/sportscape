@@ -81,6 +81,7 @@ export function VendorGrid() {
       const { data, error } = await supabase
         .from('offer')
         .select('*')
+        .eq('status', 'pending')
         .eq('vendor_id', user.id)
         .limit(3);
       if (!error) {
@@ -115,7 +116,7 @@ export function VendorGrid() {
         <Grid.Col span={{ base: 12, xs: 4 }}>
           <Card shadow="lg" p="lg" className="bg-white rounded-lg shadow-lg p-6 transition duration-300 hover:shadow-xl transform hover:-translate-y-1">
             <div className="flex flex-col items-center space-y-4">
-              <Avatar uid={user.id} url={`https://duelkbjyxfgctjrijjoe.supabase.co/storage/v1/object/public/avatars/${user.picture_url}`} size={150} editingAllowed={false} />
+              <Avatar uid={user.id} url={user.picture_url} size={150} editingAllowed={false} />
               <div className="w-full bg-orange-500 p-4 rounded-b-lg">
                 <h1 className="text-2xl font-bold text-white text-center">{user.name}</h1>
               </div>

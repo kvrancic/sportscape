@@ -48,7 +48,7 @@ export default function FinishProfile({ user }) {
       const { error: profileError } = await supabase.from('profile').upsert({
         id: user.id,
         name: values.name,
-        picture_url: avatarUrl,
+        picture_url: 'https://duelkbjyxfgctjrijjoe.supabase.co/storage/v1/object/public/avatars/' + avatarUrl,
         type: values.accountType,
       });
 
