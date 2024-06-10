@@ -8,11 +8,7 @@ import BuyRequestForm from './BuyRequestForm';
 import OwnedSlot from './OwnedSlot';
 import ToJoinSlot from './ToJoinSlot';
 import JoinedSlot from './JoinedSlot';
-import BoughtSlotInfo from './BoughtSlotInfo';
-import Chat from './Chat';
-import Reviews from './Reviews';
-import EditSlot from './EditSlot';
-import JoinRequestForm from './JoinRequestForm';
+import SlotHero from './SlotHero';
 import { Loader } from '@mantine/core';
 
 const SlotDetails = ({params}) => {
@@ -73,26 +69,21 @@ const SlotDetails = ({params}) => {
   const userHasRequested = slotRequests.some(request => request.user_id === currentUser.id);
 
   return (
-    <div className="container mx-auto p-4 mb-20">
-      <SlotBasicInfo slot={slot} />
+    <div className="container mx-auto px-8 šy-4 mb-20">
+      <SlotHero slot={slot} />
       {slot.is_available ? (
-        <BuyRequestForm slot={slot}/>
+        <>
+          <SlotBasicInfo slot={slot} />
+          <BuyRequestForm slot={slot}/>
+        </>
+        
       ) : isOwner ? (
-        <OwnedSlot slot={slot}>
-          <BoughtSlotInfo slot={slot} addReview={false} />
-          <Chat slot_id={slot.slot_id} />
-          <EditSlot slot={slot} />
-        </OwnedSlot>
+        <OwnedSlot slot={slot}/>
+          
       ) : !userHasRequested ? (
-        <ToJoinSlot slot={slot}>
-          <JoinRequestForm slot={slot} />
-          <BoughtSlotInfo slot={slot} addReview={false} />
-        </ToJoinSlot>
+        <ToJoinSlot slot={slot}/>
       ) : (
-        <JoinedSlot slot={slot}>
-          <Chat slot_id={slot.slot_id} />
-          <BoughtSlotInfo slot={slot} addReview={true} />
-        </JoinedSlot>
+        <JoinedSlot slot={slot}/>
       )}
     </div>
   );
