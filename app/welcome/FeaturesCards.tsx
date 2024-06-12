@@ -26,9 +26,9 @@ const mockdata = [
     icon: IconUser,
   },
   {
-    title: 'Secure Transactions',
+    title: 'Secure Information',
     description:
-      'We prioritize your privacy and security. All transactions are protected, ensuring a safe and trustworthy environment for all users.',
+      'We prioritize your privacy and security. All your chats and reviews are protected, ensuring a safe and trustworthy environment for all users.',
     icon: IconCookie,
   },
 ];

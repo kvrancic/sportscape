@@ -47,7 +47,7 @@ export function FaqWithImage() {
               <Accordion.Item className={classes.item} value="contact-support">
                 <Accordion.Control>How can I contact support?</Accordion.Control>
                 <Accordion.Panel>
-                  If you need assistance, you can contact me via the &quot;kv54199@fer.hr&quot; email. We&apos;re here to help with any questions or issues you may have.
+                  If you need assistance, you can contact me via the &quot;kv54199@fer.hr&quot; email. I am here to help with any questions or issues you may have.
                 </Accordion.Panel>
               </Accordion.Item>
             </Accordion>

@@ -48,7 +48,7 @@ const UserSlots = () => {
     return slots.map((item) => (
       <Table.Tr key={item.slot.slot_id}>
         <Table.Td>
-          <Link href={`athlete/slot/${item.slot.slot_id}`}>
+          <Link href={`/athlete/slot/${item.slot.slot_id}`}>
             <Group gap="sm">
               <Avatar size={26} src={item.slot.slot_photo || 'https://via.placeholder.com/26'} radius={26} />
               <Text size="sm" fw={500}>

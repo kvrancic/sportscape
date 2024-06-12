@@ -27,7 +27,7 @@ const BuyCard = ({ facility }) => {
   };
 
   return (
-    <div className="bg-white shadow-xl rounded-md overflow-hidden border border-gray-200">
+    <div className=" shadow-xl rounded-md overflow-hidden border border-gray-200">
       <div className="flex justify-center items-center border-b border-gray-300">
         <img src={facility.slot_photo} alt={facility.name} className="object-cover h-52 w-full" />
       </div>

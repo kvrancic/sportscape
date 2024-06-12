@@ -45,7 +45,7 @@ const data = [
     image: 'https://images.unsplash.com/photo-1580692475446-c2fabbbbf835?q=80&w=2062&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     title: 'Basketball',
     category: 'Sport',
-    description: 'Shoot hoops and slam dunks with friends.'
+    description: 'Shooting three-pointers and dunking on your friends has never been easier'
   },
   {
     image: 'https://plus.unsplash.com/premium_photo-1684241184359-08ffcba55bee?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',

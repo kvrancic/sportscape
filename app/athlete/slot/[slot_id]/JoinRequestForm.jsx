@@ -117,7 +117,7 @@ const JoinRequestForm = ({ slot }) => {
   };
 
   return (
-    <div className="bg-white shadow-xl shadow-orange-500 rounded-lg p-6">
+    <div className=" shadow-xl shadow-orange-500 rounded-lg p-6">
       <div className="text-center mb-6">
         <h2 className="text-6xl text-orange-500 font-black">JOIN THE SLOT!</h2>
         <p className="text-gray-700">Make your request to join this exciting slot and become part of the team.</p>

@@ -24,7 +24,7 @@ export const AthleteTimeline = () => {
         </Timeline.Item>
 
         <Timeline.Item bullet={<IconPray size={36} />} title="Play">
-          <Text size="md">LET&apos;S PLAY</Text>
+          <Text size="md">Enjoy the game with your new friends</Text>
         </Timeline.Item>
       </Timeline>
     </div>

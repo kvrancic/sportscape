@@ -25,7 +25,7 @@ export const VendorTimeline = () => {
         </Timeline.Item>
 
         <Timeline.Item bullet={<IconMoneybag size={36} />} title="Profit">
-          <Text size="md">stonks</Text>
+          <Text size="md">Build a long-lasting customer base</Text>
         </Timeline.Item>
       </Timeline>
     </div>

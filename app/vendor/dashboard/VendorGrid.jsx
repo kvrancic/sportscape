@@ -65,7 +65,7 @@ export function VendorGrid() {
         setStatsData([
           { label: 'Available Slots', stats: availableCount, progress: (availableCount / (availableCount + unavailableCount)) * 100 || 0, color: 'teal', icon: 'up' },
           { label: 'Unavailable Slots', stats: unavailableCount, progress: (unavailableCount / (availableCount + unavailableCount)) * 100 || 0, color: 'red', icon: 'down' },
-          { label: 'Received Requests', stats: requestsCount, progress: 100, color: 'blue', icon: 'down' },
+          { label: 'Total received Requests', stats: requestsCount, progress: 100, color: 'blue', icon: 'down' },
         ]);
       }
     };
