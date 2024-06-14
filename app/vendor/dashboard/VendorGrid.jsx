@@ -82,8 +82,7 @@ export function VendorGrid() {
         .from('offer')
         .select('*')
         .eq('status', 'pending')
-        .eq('vendor_id', user.id)
-        .limit(3);
+        .eq('vendor_id', user.id);
       if (!error) {
         console.log('Requests:', data);
         setRequests(data);

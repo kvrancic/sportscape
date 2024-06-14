@@ -37,7 +37,7 @@ function AccordionControl({ request, status }) {
       {status === 'accepted' && (
         <IconCheck size={24} color="green" />
       )}
-      {status === 'declined' && (
+      {status === 'rejected' && (
         <IconX size={24} color="red" />
       )}
     </Center>
@@ -102,7 +102,7 @@ function RequestAccordion({ title, requests, viewAllLink, limit = 0 }) {
   const handleDecline = async (offer_id) => {
     const { data, error } = await supabase
       .from('offer')
-      .update({ status: 'declined' })
+      .update({ status: 'rejected' })
       .eq('offer_id', offer_id);
 
     if (error) {
@@ -110,7 +110,7 @@ function RequestAccordion({ title, requests, viewAllLink, limit = 0 }) {
     } else {
       setDetailedRequests((prevRequests) =>
         prevRequests.map((request) =>
-          request.offer_id === offer_id ? { ...request, status: 'declined' } : request
+          request.offer_id === offer_id ? { ...request, status: 'rejected' } : request
         )
       );
     }
@@ -132,7 +132,7 @@ function RequestAccordion({ title, requests, viewAllLink, limit = 0 }) {
         className={`p-4 rounded-lg ${
           request.status === 'accepted'
             ? 'border-2 border-green-500'
-            : request.status === 'declined'
+            : request.status === 'rejected'
             ? 'border-2 border-red-500'
             : ''
         }`}

@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
       <head>
       </head>
       <body>
-        <MantineProvider defaultColorScheme='dark' theme={{
+        <MantineProvider defaultColorScheme='light' theme={{
           primaryColor: 'orange',
           colors: {
             'orange': [
