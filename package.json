@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chatscope/chat-ui-kit-react": "^2.0.3",
+    "@chatscope/chat-ui-kit-styles": "^1.4.0",
     "@mantine/carousel": "^7.10.0",
     "@mantine/core": "^7.10.1",
     "@mantine/dates": "^7.10.1",
@@ -29,6 +31,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-google-places-autocomplete": "^4.0.1",
+    "styled-components": "^6.1.11",
     "uuid": "^9.0.1"
   },
   "devDependencies": {

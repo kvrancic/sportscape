@@ -25,7 +25,7 @@ function BuySlots() {
 
   return (
     <div className='flex justify-center items-center w-screen'>
-      <div className='w-[95%] xl:w-4/5 py-11 px-10'>
+      <div className='w-[95%] xl:w-4/5 xl:py-11 px-10'>
         <div className="flex flex-col justify-center items-center">
           <div className="flex flex-col align-center items-center justify-center mt-8">
             <div className="flex 2xl:flex-row flex-col relative align-baseline items-baseline gap-4">
@@ -42,7 +42,7 @@ function BuySlots() {
               <p className='font-bold text-orange-500 shadow-xl'>Search Query: {searchQuery}</p>
             </div>
           </div>
-          <Button className="mt-8" color="orange" onClick={toggleFilters}>
+          <Button className="lg:mt-8" color="orange" onClick={toggleFilters}>
             {filtersVisible ? 'Hide Filters' : 'Show Filters'}
           </Button>
           {filtersVisible && (

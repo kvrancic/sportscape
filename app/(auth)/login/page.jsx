@@ -12,7 +12,7 @@ export default async function PrivatePage() {
     redirect('/dashboard');
   } else {
     return (
-      <div className="flex h-screen">
+      <div className="flex h-screen w-full">
         <div className="hidden xl:flex flex-1">
           <RandomImage />
         </div>
