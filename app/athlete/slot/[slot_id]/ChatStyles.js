@@ -6,11 +6,11 @@ const ChatStyles = createGlobalStyle`
     background-color: #eeeeee; /* White background */
   }
 
-  div .cs-message--incoming .cs-message__content {
+  div .cs-message--outgoing .cs-message__content {
     background-color: #ffa552; /* Orange background for incoming messages */
   }
 
-  div .cs-message--outgoing .cs-message__content {
+  div .cs-message--incoming .cs-message__content {
     background-color: #d3d3d3; /* Light grey background for outgoing messages */
   }
 
