@@ -3,6 +3,7 @@
 import styles from '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import { useState, useEffect } from 'react';
 import { Space } from '@mantine/core';
+import { useRouter } from 'next/navigation';
 import {
   ConversationHeader,
   Avatar,
@@ -20,6 +21,7 @@ const Chat = ({ slot_id }) => {
   const [messages, setMessages] = useState([]);
   const [user, setUser] = useState(null);
   const [avatarUrl, setAvatarUrl] = useState('');
+  const router = useRouter();
 
   useEffect(() => {
     const fetchUserAndMessages = async () => {
@@ -48,7 +50,7 @@ const Chat = ({ slot_id }) => {
           message_text,
           timestamp,
           sender_id,
-          profile:profile(name, picture_url)
+          profile:profile(id, name, picture_url)
         `)
         .eq('slot_id', slot_id)
         .order('timestamp', { ascending: true });
@@ -74,7 +76,7 @@ const Chat = ({ slot_id }) => {
           // Fetch the sender's profile information
           const { data: profile, error: profileError } = await supabase
             .from('profile')
-            .select('name, picture_url')
+            .select('id, name, picture_url')
             .eq('id', newMessage.sender_id)
             .single();
 
@@ -104,6 +106,10 @@ const Chat = ({ slot_id }) => {
     }
   };
 
+  const handleAvatarClick = (userId) => {
+    router.push(`/athlete/profile/${userId}`);
+  };
+
   return (
     <>
       <ChatStyles />
@@ -127,7 +133,12 @@ const Chat = ({ slot_id }) => {
               }}
               className={msg.sender_id === user.id ? 'light-grey' : 'orange-500'}
             >
-              <Avatar name={msg.profile?.name || 'Unknown'} src={msg.profile?.picture_url || 'https://via.placeholder.com/150'} />
+              <Avatar
+                name={msg.profile?.name || 'Unknown'}
+                src={msg.profile?.picture_url || 'https://via.placeholder.com/150'}
+                onClick={() => handleAvatarClick(msg.profile?.id)}
+                style={{ cursor: 'pointer' }}
+              />
               <Message.Header sender={msg.profile?.name || 'Unknown'} />
             </Message>
           ))}
