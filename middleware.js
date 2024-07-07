@@ -27,8 +27,8 @@ export async function middleware(req) {
 
   console.log(profile);
 
-  // Redirect to /finishprofile if user is logged in but has no profile
-  if (!profile) {
+  // Redirect to /finishprofile if user is logged in but has no role
+  if (!profile || profile.type === null) {
     const url = new URL('/finishprofile', req.url);
     return NextResponse.redirect(url);
   }
