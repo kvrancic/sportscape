@@ -1,53 +1,25 @@
-import { redirect } from 'next/navigation'
+import { redirect } from 'next/navigation';
+import { createClient } from '@/utils/supabase/server';
 
-import { createClient } from '@/utils/supabase/server'
+export default async function WelcomePage() {
+  const supabase = createClient();
 
-export default async function PrivatePage() {
-  const supabase = createClient()
-
-  const { data, error } = await supabase.auth.getUser()
-  if (error || !data?.user) {
-    redirect('/welcome')
-  }
-  else{
-    redirect('/dashboard')
+  const { data: userData, error: userError } = await supabase.auth.getUser();
+  if (userError || !userData?.user) {
+    redirect('/welcome');
   }
 
-  return <p>Hello {data.user.email}</p>
+  const { data: profileData, error: profileError } = await supabase
+    .from('profile')
+    .select('type')
+    .eq('id', userData.user.id)
+    .single();
+
+  if (profileError || profileData?.type === null) {
+    redirect('/finishprofile');
+  }
+
+  redirect('/dashboard');
+
+  return <p>Hello {userData.user.email}</p>;
 }
-
-
-/* 'use client'
-
-import { useState, useEffect } from 'react'
-import supabase from '../utils/supabase'
-import NewTodo from '../components/NewTodo'
-import { useRouter } from 'next/navigation' 
-
-export default function Home() {
-  const router = useRouter()
-
-  const [todos, setTodos] = useState([])
-
-  const fetchTodos = async () => {
-    const { data } = await supabase.from('todos').select('*');
-
-    if (data) {
-      setTodos(data);
-    }
-  }
-
-  useEffect(() => {
-    fetchTodos();
-  }, [])
-
-  return (
-    <div>
-      <button className="border px-4 py-4" onClick={() => router.push("login")}>Login</button>
-      <NewTodo reload={fetchTodos} />
-      {todos.map((todo) => (
-        <p key={todo.id}>{todo.title}</p>
-      ))}
-    </div>
-  )
-} */
