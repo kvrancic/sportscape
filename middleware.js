@@ -19,8 +19,19 @@ export async function middleware(req) {
   }
 
   // Get user profile
-  const { data: profile } = await supabase.from('profile').select('type').eq('id', user.id).single();
+  const { data: profile, error: profileError } = await supabase
+    .from('profile')
+    .select('type')
+    .eq('id', user.id)
+    .single();
+
   console.log(profile);
+
+  // Redirect to /finishprofile if user is logged in but has no profile
+  if (!profile) {
+    const url = new URL('/finishprofile', req.url);
+    return NextResponse.redirect(url);
+  }
 
   const pathname = nextUrl.pathname;
 
@@ -61,4 +72,3 @@ export const config = {
     '/vendor/:path*'
   ], // Apply middleware only to /dashboard and its sub-routes, /athlete and its sub-routes, and /vendor and its sub-routes
 };
-
