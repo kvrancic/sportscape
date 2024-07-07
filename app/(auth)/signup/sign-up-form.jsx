@@ -24,7 +24,7 @@ export default function SignUpForm() {
             },
           },
         }}
-        providers={[]}
+        providers={['google']}
       />
       <div className="pt-4 text-center">
         Already have an account?{" "}
