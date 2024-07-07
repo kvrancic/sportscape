@@ -7,8 +7,8 @@ import { ColorSchemeScript, MantineProvider} from '@mantine/core';
 import theme from '@/theme';
 
 export const metadata = {
-  title: 'IN PROGRESS',
-  description: 'I have followed setup instructions carefully',
+  title: 'SPORTSCAPE',
+  description: 'Your number one sport companion',
 };
 
 export default function RootLayout({ children }) {
