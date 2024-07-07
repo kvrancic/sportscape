@@ -12,10 +12,15 @@ export async function middleware(req) {
   // Get user
   const { data: { user } } = await supabase.auth.getUser();
 
+  const pathname = nextUrl.pathname;
+
   if (!user) {
     console.log('no user');
-    const url = new URL('/welcome', req.url);
-    return NextResponse.redirect(url);
+    if (pathname !== '/welcome') {
+      const url = new URL('/welcome', req.url);
+      return NextResponse.redirect(url);
+    }
+    return NextResponse.next();
   }
 
   // Get user profile
@@ -29,11 +34,12 @@ export async function middleware(req) {
 
   // Redirect to /finishprofile if user is logged in but has no role
   if (!profile || profile.type === null) {
-    const url = new URL('/finishprofile', req.url);
-    return NextResponse.redirect(url);
+    if (pathname !== '/finishprofile') {
+      const url = new URL('/finishprofile', req.url);
+      return NextResponse.redirect(url);
+    }
+    return NextResponse.next();
   }
-
-  const pathname = nextUrl.pathname;
 
   // Redirect users based on their role
   if (pathname === '/dashboard') {
@@ -69,6 +75,8 @@ export const config = {
   matcher: [
     '/dashboard',
     '/athlete/:path*',
-    '/vendor/:path*'
-  ], // Apply middleware only to /dashboard and its sub-routes, /athlete and its sub-routes, and /vendor and its sub-routes
+    '/vendor/:path*',
+    '/welcome',
+    '/finishprofile'
+  ], // Apply middleware to these paths
 };
