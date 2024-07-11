@@ -53,7 +53,7 @@ const AddReview = ({ toUserId }) => {
   };
 
   return (
-    <div className="bg-white p-4 rounded-lg mt-4 shadow-md">
+    <div className="p-4 rounded-lg mt-4 shadow-md">
       {submitted ? (
         <Notification icon={<IconCheck size="1.1rem" />} color="teal" title="Review Submitted" disallowClose>
           Your review has been submitted successfully.

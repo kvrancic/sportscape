@@ -42,7 +42,7 @@ const Reviews = ({ reviews, addReview, slot_id }) => {
       <div className="flex flex-col gap-4 mt-4">
         {reviews.length > 0 ? (
           reviews.map((review) => (
-            <div key={review.athlete_id} className="flex gap-4 bg-white p-4 rounded-lg shadow-md">
+            <div key={review.athlete_id} className="flex gap-4 p-4 rounded-lg shadow-md">
               <img
                 src={review.is_anonymous ? 'https://via.placeholder.com/40' : review.profile.picture_url || 'https://via.placeholder.com/40'}
                 alt={`${review.is_anonymous ? 'Anonymous' : review.profile.name}'s picture`}

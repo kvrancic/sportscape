@@ -118,7 +118,7 @@ const UserSlots = () => {
           <Loader color="orange" size="xl" />
         </Center>
       ) : (
-        <div className="mt-4 bg-gray-100">
+        <div className="mt-4 shadow-2xl shadow-orange-500">
           {selectedSection === 'Owned Slots' ? renderTable(ownedSlots, 'Owned Slots') : renderTable(joinedSlots, 'Joined Slots')}
         </div>
       )}

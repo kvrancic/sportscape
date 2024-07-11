@@ -29,7 +29,7 @@ export default function SignInForm() {
       <SignIn
         supabaseClient={supabase}
         appearance={classAppearance}
-        providers={['google']}
+        providers={[]}
         
       />
       <div className="pt-4 text-center">

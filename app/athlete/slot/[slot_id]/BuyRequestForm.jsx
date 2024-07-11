@@ -160,7 +160,7 @@ const BuyRequestForm = ({ slot }) => {
   const availableSports = ['basketball', 'football', 'volleyball'].filter(sport => slot[`${sport}_available`]);
 
   return (
-    <div className={`bg-white shadow-xl ${shadow} rounded-lg p-6`}>
+    <div className={`shadow-xl ${shadow} rounded-lg p-6`}>
       <div className="text-center mb-6">
         <h2 className={`text-6xl text-${color} font-black`}>{heading}</h2>
       </div>

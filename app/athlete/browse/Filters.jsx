@@ -11,7 +11,7 @@ function Filters({
 }) {
   return (
     <div className='mt-8 w-full'>
-      <div className='p-5 border-4 shadow-orange-500 shadow-md rounded-lg bg-white'>
+      <div className='p-5 border-4 shadow-orange-500 shadow-md rounded-lg'>
         <div className='flex flex-col md:flex-row gap-16 p-4 mb-4'>
           <MultiSelect
             label="Sport Type 🏀"

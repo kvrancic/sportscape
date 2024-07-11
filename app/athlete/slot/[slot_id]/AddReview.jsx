@@ -74,7 +74,7 @@ const AddReview = ({ slot_id }) => {
   };
 
   return (
-    <div className="bg-white p-4 rounded-lg shadow-lg w-[100%]">
+    <div className="p-4 rounded-lg shadow-lg w-[100%]">
       {hasReviewed ? (
         <div className="text-center tex-2xl">Review already posted.</div>
       ) : (
