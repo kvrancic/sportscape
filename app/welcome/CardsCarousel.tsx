@@ -82,6 +82,7 @@ export function CardsCarousel() {
       slideGap={{ base: rem(2), sm: 'xl' }}
       align="start"
       slidesToScroll={mobile ? 1 : 2}
+      className='md:mx-0 mx-10'
     >
       {slides}
     </Carousel>

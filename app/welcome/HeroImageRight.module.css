@@ -43,8 +43,8 @@
   font-size: rem(48px);
 
   @media (max-width: $mantine-breakpoint-md) {
-    max-width: 100%;
-    font-size: rem(34px);
+    max-width: 70%;
+    font-size: rem(38px);
     line-height: 1.15;
   }
 }
@@ -57,7 +57,7 @@
   text-shadow: 2px 2px 0 #000 0.3;
 
   @media (max-width: $mantine-breakpoint-md) {
-    max-width: 100%;
+    max-width: 70%;
   }
 }
 
@@ -81,7 +81,8 @@
 }
 
 .gradientText {
-  font-size: rem(48px);
+  font-size: rem(62px);
+  box-shadow: 2px 2px 0 #000 0.3;
 }
 
 .controls {

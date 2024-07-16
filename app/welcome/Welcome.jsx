@@ -33,7 +33,7 @@ export default function Welcome() {
 
           <Space h="50" />
 
-          <div className="grid grid-cols-2 justify-center content-center space-x-10 mx-auto">
+          <div className="grid grid-cols-2 justify-center content-center space-x-10 lg:mx-auto mx-10">
             <AthleteTimeline />
             <VendorTimeline />
           </div>
