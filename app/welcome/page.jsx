@@ -9,7 +9,7 @@ export default async function Page() {
   // Fetch the current user
   const { data: userData, error: userError } = await supabase.auth.getUser();
   console.log('User Data:', userData);
-  console.log('User Error:', userError);
+  //console.log('User Error:', userError);
 
   if (userData?.user) {
     // Fetch the user's profile
